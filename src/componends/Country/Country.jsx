@@ -1,5 +1,6 @@
 import React from 'react';
 import './Country.css';
+import { useState } from 'react';
 
 const Country = ({country}) => {
     const name = country?.name?.common || 'Unknown country';
@@ -13,9 +14,15 @@ const Country = ({country}) => {
     const capital = country?.capital?.capital || country?.capital || [];
     const languagesObject = country?.languages?.languages || country?.languages || {};
     const languages = Object.values(languagesObject);
+     
 
+    const [visited, setVisited] = useState(false);
+    
+    const handleVisitedClick = () => {
+        setVisited(!visited);
+    };
     return (
-        <div className='country-card'>
+        <div className={`country-card ${visited ? 'country-visited' : ''}`}>
             {flagSrc && <img className='country-flag' src={flagSrc} alt={flagAlt} />}
             <h3>Name: {name}</h3>
             <p>Code: {code}</p>
@@ -25,6 +32,7 @@ const Country = ({country}) => {
             <p>Capital: {Array.isArray(capital) ? capital.join(', ') || 'N/A' : capital}</p>
             <p>Continent: {Array.isArray(continents) ? continents.join(', ') || 'N/A' : continents}</p>
             <p>Languages: {languages.length ? languages.join(', ') : 'N/A'}</p>
+            <button onClick={handleVisitedClick} className='btn'>{visited ? 'Visited' : 'Not Visited'}</button>
         </div>
     );
 };

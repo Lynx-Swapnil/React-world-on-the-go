@@ -10,7 +10,9 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 12px;
+    padding-bottom: 52px;
     background: color-mix(in srgb, var(--bg) 88%, var(--code-bg) 12%);
+    position: relative;
 }
 
 .country-card h3 {
@@ -27,4 +29,21 @@
     object-fit: cover;
     border-radius: 6px;
     border: 1px solid var(--border);
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--code-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+}
+.country-visited {
+    background: color-mix(in srgb, #4caf50 16%, var(--bg) 84%);
+    border-color: #4caf50;
 }
