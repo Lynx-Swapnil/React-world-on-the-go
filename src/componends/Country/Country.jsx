@@ -1,8 +1,7 @@
 import React from 'react';
 import './Country.css';
-import { useState } from 'react';
 
-const Country = ({country}) => {
+const Country = ({country, isVisited, handleVisitedCountries}) => {
     const name = country?.name?.common || 'Unknown country';
     const flagSrc = country?.flags?.flags?.png || country?.flags?.png || '';
     const flagAlt = country?.flags?.flags?.alt || `${name} flag`;
@@ -14,26 +13,33 @@ const Country = ({country}) => {
     const capital = country?.capital?.capital || country?.capital || [];
     const languagesObject = country?.languages?.languages || country?.languages || {};
     const languages = Object.values(languagesObject);
-     
-
-    const [visited, setVisited] = useState(false);
+    const formatNumber = (value) => (typeof value === 'number' ? new Intl.NumberFormat().format(value) : value);
     
     const handleVisitedClick = () => {
-        setVisited(!visited);
+        handleVisitedCountries(country, !isVisited);
     };
+
     return (
-        <div className={`country-card ${visited ? 'country-visited' : ''}`}>
+        <article className={`country-card ${isVisited ? 'country-visited' : ''}`}>
             {flagSrc && <img className='country-flag' src={flagSrc} alt={flagAlt} />}
-            <h3>Name: {name}</h3>
-            <p>Code: {code}</p>
-            <p>Region: {region}</p>
-            <p>Population: {population}</p>
-            <p>Area: {area}</p>
-            <p>Capital: {Array.isArray(capital) ? capital.join(', ') || 'N/A' : capital}</p>
-            <p>Continent: {Array.isArray(continents) ? continents.join(', ') || 'N/A' : continents}</p>
-            <p>Languages: {languages.length ? languages.join(', ') : 'N/A'}</p>
-            <button onClick={handleVisitedClick} className='btn'>{visited ? 'Visited' : 'Not Visited'}</button>
-        </div>
+            <div className='country-body'>
+                <p className='country-region'>{region}</p>
+                <h3>{name}</h3>
+
+                <div className='country-stats'>
+                    <p><span>Code</span><strong>{code}</strong></p>
+                    <p><span>Population</span><strong>{formatNumber(population)}</strong></p>
+                    <p><span>Area</span><strong>{formatNumber(area)}</strong></p>
+                    <p><span>Capital</span><strong>{Array.isArray(capital) ? capital.join(', ') || 'N/A' : capital}</strong></p>
+                    <p><span>Continent</span><strong>{Array.isArray(continents) ? continents.join(', ') || 'N/A' : continents}</strong></p>
+                    <p><span>Languages</span><strong>{languages.length ? languages.join(', ') : 'N/A'}</strong></p>
+                </div>
+
+                <button onClick={handleVisitedClick} className='btn'>
+                    {isVisited ? 'Visited' : 'Mark as visited'}
+                </button>
+            </div>
+        </article>
     );
 };
 

@@ -1,49 +1,91 @@
-.countries-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    padding: 16px;
-    text-align: left;
-}
-
 .country-card {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px;
-    padding-bottom: 52px;
-    background: color-mix(in srgb, var(--bg) 88%, var(--code-bg) 12%);
-    position: relative;
-}
-
-.country-card h3 {
-    margin: 10px 0;
-}
-
-.country-card p {
-    margin: 6px 0;
+    border: 1px solid var(--stroke);
+    border-radius: 14px;
+    background: linear-gradient(180deg, #121d31, #0f182a);
+    box-shadow: 0 10px 22px rgba(3, 8, 18, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .country-flag {
     width: 100%;
-    height: 160px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid var(--border);
+    display: block;
+}
+
+.country-body {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.country-region {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent-soft) 75%, #0c1424 25%);
+    color: #90ccff;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.country-card h3 {
+    margin: 0 0 0.55rem;
+    font-size: 1.15rem;
+}
+
+.country-stats {
+    display: grid;
+    gap: 0.45rem;
+    margin-bottom: 0.7rem;
+}
+
+.country-stats p {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+}
+
+.country-stats span {
+    color: var(--ink-soft);
+}
+
+.country-stats strong {
+    color: var(--ink);
+    text-align: right;
 }
 
 .btn {
-    display: inline-block;
-    padding: 8px 16px;
-    background: var(--code-bg);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    text-decoration: none;
-    position: absolute;
-    left: 12px;
-    bottom: 12px;
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--stroke) 55%);
+    background: linear-gradient(180deg, #18324f, #122940);
+    color: #a7d7ff;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: auto;
 }
+
+.btn:hover {
+    background: linear-gradient(180deg, #204269, #173552);
+}
+
 .country-visited {
-    background: color-mix(in srgb, #4caf50 16%, var(--bg) 84%);
-    border-color: #4caf50;
+    border-color: color-mix(in srgb, var(--success) 50%, var(--stroke) 50%);
+    box-shadow: 0 12px 24px rgba(79, 209, 161, 0.2);
+}
+
+.country-visited .btn {
+    background: color-mix(in srgb, var(--success) 24%, #122437 76%);
+    color: #c6ffe9;
+    border-color: color-mix(in srgb, var(--success) 45%, var(--stroke) 55%);
 }

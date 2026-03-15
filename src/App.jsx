@@ -11,7 +11,13 @@ function App() {
 
   return (
     <>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className='loading-screen'>
+          <p className='loading-chip'>Fetching countries...</p>
+        </div>
+      }
+    >
       <Countries countriesPromise = {countriesPromise}/>
     </Suspense>
     </>
