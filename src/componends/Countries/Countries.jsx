@@ -4,7 +4,7 @@ import './Countries.css';
 
 const Countries = ({countriesPromise}) => {
     const countriesData = use(countriesPromise);
-    const countries = countriesData?.countries || [];
+    const countries = useMemo(() => countriesData?.countries || [], [countriesData]);
 
     const [visitedCodes, setVisitedCodes] = useState([]);
     const [searchText, setSearchText] = useState('');
