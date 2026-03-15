@@ -1,6 +1,5 @@
 
 import { Suspense } from 'react'
-import './App.css'
 import Countries from './componends/Countries/Countries'
 
 

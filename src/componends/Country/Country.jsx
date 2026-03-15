@@ -1,4 +1,5 @@
 import React from 'react';
+import './Country.css';
 
 const Country = ({country}) => {
     const name = country?.name?.common || 'Unknown country';
