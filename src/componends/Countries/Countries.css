@@ -123,7 +123,7 @@
 
 .visited-sidebar {
     position: sticky;
-    top: 5rem;
+    top: 1rem;
     align-self: start;
     text-align: left;
     border: 1px solid var(--stroke);
@@ -131,7 +131,7 @@
     background: linear-gradient(180deg, #10192a, #0d1524);
     padding: 1rem;
     box-shadow: 0 8px 20px rgba(3, 8, 18, 0.24);
-    max-height: calc(100svh - 6rem);
+    max-height: calc(100svh - 2rem);
     overflow: auto;
 }
 
